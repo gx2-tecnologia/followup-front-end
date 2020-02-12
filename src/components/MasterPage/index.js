@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from 'components/Header';
 import Sidebar from 'components/Sidebar';
-import { drawerWidth } from 'params/params';
+// import { drawerWidth } from 'params/params';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -12,14 +12,14 @@ const useStyles = makeStyles(theme => ({
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
+      width: 240,
       flexShrink: 0,
     },
   },
 
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth,
+    width: 240,
   },
   content: {
     flexGrow: 1,
