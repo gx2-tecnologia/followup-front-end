@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from 'routes/routes';
+import './app.css';
 function App() {
   return (
     <h1>

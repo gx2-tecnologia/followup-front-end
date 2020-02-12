@@ -1,5 +1,5 @@
 import Home from 'pages/Home';
-import CadastroIndicador from 'pages/CadastroIndicador/cadastroIndicador';
+import cadastroCliente from 'pages/cadastroCliente';
 
 export const routes = [
   {
@@ -9,9 +9,9 @@ export const routes = [
     isMenu: false,
   },
   {
-    description: 'Cadastro de Indicadores',
-    path: '/CadastroIndicador',
-    component: CadastroIndicador,
+    description: 'Cadastro de Cliente',
+    path: '/cadastrocliente',
+    component: cadastroCliente,
     isMenu: false,
   },
 ];
