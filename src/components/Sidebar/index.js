@@ -20,8 +20,6 @@ import { useStyles } from './styles';
 import { routes } from 'routes/listRoutes';
 
 export default function Sidebar(props) {
-  let listRoutes;
-
   const verifyPermission = () => {
     let path = '';
 
@@ -37,8 +35,6 @@ export default function Sidebar(props) {
     return path;
   };
 
-  listRoutes = routes;
-
   const { container } = props;
   const classes = useStyles();
 
@@ -49,10 +45,8 @@ export default function Sidebar(props) {
       </div>
       <Divider />
       <List>
-        {listRoutes.map((item, index) => {
-          if (!item.isMenu) {
-            return false;
-          }
+        {routes.map((item, index) => {
+          console.log(item);
 
           return (
             <Link
@@ -110,7 +104,3 @@ export default function Sidebar(props) {
     </div>
   );
 }
-
-// export default connect(state => ({
-//   typeUser: state.type,
-// }))(Sidebar);
