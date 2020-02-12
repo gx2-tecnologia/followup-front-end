@@ -2,14 +2,13 @@ import styled from 'styled-components';
 
 export const ContainerMain = styled.div`
   width: 700px;
-  height: 500px;
   margin: 10px auto;
-  background-color: #ffffff;
 
   div.divForm {
     border-radius: 10px;
     padding: 80px 50px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.349019607843);
+    background-color: #ffffff;
   }
 
   h1 {
