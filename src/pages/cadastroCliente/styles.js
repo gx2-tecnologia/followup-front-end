@@ -31,9 +31,11 @@ export const Content = styled.div`
 `;
 
 export const Container = styled.div`
-  background-color: #dcdcdc;
+  background-color: #fff;
   padding-bottom: 30px;
   width: 70%;
+  margin: 0 auto;
+  padding-top: 20px;
   h2 {
     margin-left: 20%;
   }
