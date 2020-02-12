@@ -1,14 +1,34 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+
+export const Container = styled.div`
+  background-color: #fff;
+  padding-bottom: 30px;
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 20px;
+
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.349019607843);
+  background-color: #ffffff;
+
+  .BtnEnviar {
+    margin-left: 59%;
+    margin-top: 10px;
+  }
+  h2 {
+    font-size: 30px;
+    text-align: center;
+    /* margin-left:20%; */
+  }
+`;
 
 export const Content = styled.div`
-  background-color: #fff;
+   background-color: #fff;
   width: 300px;
+  padding: 20px;
   margin: 0 auto;
 
-  h2{
-    font-size: 30px;
-  }
+
 
   display: flex;
   flex-direction: column;
@@ -39,31 +59,5 @@ export const Content = styled.div`
       font-weight: normal;
     }
 
-  }
-
-  .inputArquivo {
-    /* display: none; */
-
-  }
-`;
-
-export const Container = styled.div`
-  background-color: #fff;
-  padding-bottom: 30px;
-  width: 70%;
-  margin: 0 auto;
-  padding-top: 20px;
-
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.349019607843);
-  background-color: #ffffff;
-
-  h2 {
-    margin-left: 20%;
-  }
-
-  .BtnEnviar {
-    margin-left: 59%;
-    margin-top: 10px;
   }
 `;

@@ -28,7 +28,7 @@ export default function Header(props) {
           <MenuIcon />
         </IconButton>
 
-        <Typography variant="h6">teste</Typography>
+        <Typography variant="h6">Follow Up</Typography>
         <Button className={appBarClasses.actions}>
           <AccountCircleIcon fontSize="large" />
         </Button>
