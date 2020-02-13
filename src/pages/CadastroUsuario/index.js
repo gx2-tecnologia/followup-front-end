@@ -2,19 +2,19 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import api from 'services';
-import { FaFileUpload } from 'react-icons/fa';
 
 import { Container, Content } from './styles';
 
-export default class CadastroCompetencia extends React.Component {
+export default class CadastroUsuario extends React.Component {
   sytate = {
-    description: null,
+    nome: '',
+    senha: '',
   };
 
   handleSend = e => {
-    const { description } = this.state;
+    const { nome, senha } = this.state;
 
-    if (description) {
+    if (nome && senha) {
       this.handleRequest();
     } else {
       alert('Todos os campos devem estar preenchidos.');
@@ -22,10 +22,12 @@ export default class CadastroCompetencia extends React.Component {
   };
 
   handleRequest() {
-    const { description } = this.state;
+    const { nome, senha } = this.state;
+
     const response = api
-      .post('/competencias/', {
-        descricao: description,
+      .post('/cadastroUsuarios/', {
+        nome: nome,
+        senha: senha,
       })
       .then(
         response => {
@@ -42,15 +44,25 @@ export default class CadastroCompetencia extends React.Component {
   render() {
     return (
       <Container>
-        <h1>Cadastro de Competência</h1>
+        <h1>Cadastro de Usuários</h1>
 
         <Content>
           <TextField
             id="standard-basic"
-            label="Descrição da Competência"
+            label="Nome"
             onChange={e => {
               this.setState({
-                description: e.target.value,
+                nome: e.target.value,
+              });
+            }}
+            required
+          />
+          <TextField
+            id="standard-basic"
+            label="Senha"
+            onChange={e => {
+              this.setState({
+                senha: e.target.value,
               });
             }}
             required
