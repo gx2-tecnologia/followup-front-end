@@ -1,6 +1,7 @@
 import Home from 'pages/Home';
 import cadastroCliente from 'pages/cadastroCliente';
 import CadastroIndicador from 'pages/CadastroIndicador/cadastroIndicador';
+import CadastroHardSkills from '../pages/cadastroHardSkills/cadastroHardSkills';
 
 export const routes = [
   {
@@ -19,6 +20,12 @@ export const routes = [
     description: 'Cadastro de Indicadores',
     path: '/cadastroindicador',
     component: CadastroIndicador,
+    isMenu: false,
+  },
+  {
+    description: 'Conhecimentos',
+    path: '/conhecimentos',
+    component: CadastroHardSkills,
     isMenu: false,
   },
 ];
