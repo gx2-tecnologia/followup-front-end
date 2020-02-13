@@ -1,8 +1,7 @@
 import Home from 'pages/Home';
 import cadastroCliente from 'pages/cadastroCliente';
 import CadastroIndicador from 'pages/CadastroIndicador/cadastroIndicador';
-import CadastroCompetencia from 'pages/CadastroCompetencia';
-import CadastroUsuario from 'pages/CadastroUsuario';
+import CadastroHardSkills from '../pages/cadastroHardSkills/cadastroHardSkills';
 
 export const routes = [
   {
@@ -24,6 +23,9 @@ export const routes = [
     isMenu: false,
   },
   {
+    description: 'Conhecimentos',
+    path: '/conhecimentos',
+    component: CadastroHardSkills,
     description: 'Cadastro de Competência',
     path: '/cadastrocompetencia',
     component: CadastroCompetencia,
