@@ -6,8 +6,9 @@ export const Content = styled.div`
   width: 300px;
   margin: 0 auto;
 
-  h2{
+  h1{
     font-size: 30px;
+    text-align: center;
   }
 
   display: flex;
@@ -58,8 +59,9 @@ export const Container = styled.div`
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.349019607843);
   background-color: #ffffff;
 
-  h2 {
-    margin-left: 20%;
+  h1 {
+    font-size: 30px;
+    text-align: center;
   }
 
   .BtnEnviar {

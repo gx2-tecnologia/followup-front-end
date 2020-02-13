@@ -15,7 +15,7 @@ export const Container = styled.div`
     margin-left: 59%;
     margin-top: 10px;
   }
-  h2 {
+  h1 {
     font-size: 30px;
     text-align: center;
     /* margin-left:20%; */

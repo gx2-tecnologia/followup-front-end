@@ -46,21 +46,21 @@ export default class cadastroCliente extends React.Component {
       .then(
         response => {
           console.log(response);
+          alert('Dados Enviados com sucesso.');
         },
         error => {
           console.log(error);
+          alert('Serviço indisponível');
         }
       );
 
     console.log('teste', response);
-
-    alert('Dados Enviados com sucesso.');
   }
 
   render() {
     return (
       <Container>
-        <h2>Cadastro de Cliente</h2>
+        <h1>Cadastro de Cliente</h1>
 
         <Content>
           <TextField

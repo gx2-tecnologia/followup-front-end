@@ -9,16 +9,16 @@ export const ContainerMain = styled.div`
     padding: 80px 50px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.349019607843);
     background-color: #ffffff;
+
+    h1 {
+      font-family: Raleway, sans-serif;
+      font-size: 30px;
+      font-weight: 550;
+      text-align: center;
+
+      margin: 40px 20px;
+    }
   }
-
-  h1 {
-    font-family: Raleway, sans-serif;
-    font-size: 30px;
-    font-weight: 550;
-
-    margin: 40px 20px;
-  }
-
   input {
     width: 80%;
     margin-bottom: 24px;
