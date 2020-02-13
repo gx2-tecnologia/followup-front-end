@@ -50,8 +50,8 @@ export default class CadastroIndicador extends Component {
     return (
       <>
         <ContainerMain>
-          <h1> Cadastro de Indicador</h1>
           <div className="divForm">
+            <h1> Cadastro de Indicador</h1>
             <form>
               <input
                 type="text"

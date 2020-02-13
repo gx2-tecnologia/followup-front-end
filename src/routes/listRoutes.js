@@ -26,6 +26,15 @@ export const routes = [
     description: 'Conhecimentos',
     path: '/conhecimentos',
     component: CadastroHardSkills,
+    description: 'Cadastro de Competência',
+    path: '/cadastrocompetencia',
+    component: CadastroCompetencia,
+    isMenu: false,
+  },
+  {
+    description: 'Cadastro de Usuário',
+    path: '/cadastrousuario',
+    component: CadastroUsuario,
     isMenu: false,
   },
 ];

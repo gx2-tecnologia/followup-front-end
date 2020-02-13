@@ -2,6 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import api from 'services';
+import { FaFileUpload } from 'react-icons/fa';
 
 import { Container, Content } from './styles';
 
@@ -45,21 +46,21 @@ export default class cadastroCliente extends React.Component {
       .then(
         response => {
           console.log(response);
+          alert('Dados Enviados com sucesso.');
         },
         error => {
           console.log(error);
+          alert('Serviço indisponível');
         }
       );
 
     console.log('teste', response);
-
-    alert('Dados Enviados com sucesso.');
   }
 
   render() {
     return (
       <Container>
-        <h2>Cadastro de Cliente</h2>
+        <h1>Cadastro de Cliente</h1>
 
         <Content>
           <TextField
@@ -83,9 +84,6 @@ export default class cadastroCliente extends React.Component {
               type="file"
               onChange={this.handleReadArq}
             />
-            <Button variant="contained" color="primary" component="span">
-              Upload
-            </Button>
           </label>
         </Content>
         <Button

@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { drawerWidth } from 'params/params';
+// import { 240 } from 'params/params';
 
 export const useStyles = makeStyles(theme => ({
   root: {
@@ -7,14 +7,14 @@ export const useStyles = makeStyles(theme => ({
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
+      width: 240,
       flexShrink: 0,
     },
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
+      width: `calc(100% - ${240}px)`,
+      marginLeft: 240,
     },
   },
   menuButton: {
@@ -25,7 +25,7 @@ export const useStyles = makeStyles(theme => ({
   },
   toolbar: theme.mixins.toolbar,
   drawerPaper: {
-    width: drawerWidth,
+    width: 240,
   },
   content: {
     flexGrow: 1,
