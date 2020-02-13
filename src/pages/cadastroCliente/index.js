@@ -10,17 +10,42 @@ import { Container, Content, Table } from './styles';
 export default class cadastroCliente extends React.Component {
   state = {
     user: [{ id: null, razaoSocial: '', logo: '', gestao: '' }],
-    change: [{ razaoSocial: '', logo: '', gestao: '' }],
+    razaoSocial: '',
+    logo: '',
+    gestao: '',
   };
 
-  handleGet() {
-    const { razaoSocial, gestao, arquivo } = this.state.change;
+  componentDidMount() {
+    const response = api.get(`/clientes`).then(res => {
+      const users = res.data;
+      this.setState({
+        user: users,
+      });
+    });
+  }
+
+  handleSend = e => {
+    const { razaoSocial, gestao, logo } = this.state;
+    console.log('state', this.state.change);
+    console.log('teste2', razaoSocial);
+    console.log('teste2', gestao);
+    console.log('teste2', logo);
+
+    if (razaoSocial && gestao && logo) {
+      this.handleSet();
+    } else {
+      alert('Todos os campos devem estar preenchidos.');
+    }
+  };
+
+  handleSet() {
+    const { razaoSocial, gestao, logo } = this.state;
 
     const response = api
       .post('/clientes', {
         razaoSocial: razaoSocial,
         gestao: gestao,
-        arquivo: arquivo,
+        logo: logo,
       })
       .then(
         response => {
@@ -34,29 +59,6 @@ export default class cadastroCliente extends React.Component {
       );
 
     console.log('teste', response);
-  }
-
-  handleSend = e => {
-    const { razaoSocial, gestor, arquivo } = this.state;
-
-    if (razaoSocial && gestor && arquivo) {
-      this.handleRequest();
-    } else {
-      alert('Todos os campos devem estar preenchidos.');
-    }
-  };
-
-  componentDidMount() {
-    const { razaoSocial, gestao, arquivo } = this.state;
-
-    const response = api.get(`/clientes`).then(res => {
-      const users = res.data;
-      this.setState({
-        user: users,
-      });
-    });
-
-    console.log('estado', this.state);
   }
 
   handleUpdate(data) {
@@ -74,6 +76,19 @@ export default class cadastroCliente extends React.Component {
     );
 
     console.log('teste', response);
+  }
+
+  handleDelete(data) {
+    const response = api.delete(`/clientes/${data.id}`, data).then(
+      response => {
+        console.log(response);
+        alert('Dados Enviados com sucesso.');
+      },
+      error => {
+        console.log(error);
+        alert('Serviço indisponível');
+      }
+    );
   }
 
   handleRequest() {
@@ -95,9 +110,19 @@ export default class cadastroCliente extends React.Component {
           alert('Serviço indisponível');
         }
       );
-
-    console.log('teste', response);
   }
+
+  handleChangeGestor = e => {
+    this.setState({ gestao: e.target.value });
+  };
+
+  handleChangeRazaoSocial = e => {
+    this.setState({ razaoSocial: e.target.value });
+  };
+
+  handleChangeLogo = e => {
+    this.setState({ logo: e.target.value });
+  };
 
   render() {
     const columns = [
@@ -128,23 +153,22 @@ export default class cadastroCliente extends React.Component {
           <TextField
             id="standard-basic"
             label="Razão Social"
-            onChange={this.handleRazaoSocial}
-            required
+            onChange={this.handleChangeRazaoSocial}
+            // required
           />
           <TextField
             id="standard-basic"
             label="Gestor"
-            onChange={this.handleGestor}
-            required
+            onChange={this.handleChangeGestor}
+            // required
           />
           <label htmlFor="contained-button-file">
             <input
               accept="image/*"
               className="inputArquivo"
               id="contained-button-file"
-              multiple
               type="file"
-              onChange={this.handleReadArq}
+              onChange={this.handleChangeLogo}
             />
           </label>
         </Content>
@@ -163,17 +187,6 @@ export default class cadastroCliente extends React.Component {
             columns={columns}
             data={data}
             editable={{
-              onRowAdd: newData =>
-                new Promise((resolve, reject) => {
-                  setTimeout(() => {
-                    {
-                      const data = data;
-                      data.push(newData);
-                      this.setState({ data }, () => resolve());
-                    }
-                    resolve();
-                  }, 1000);
-                }),
               onRowUpdate: (newData, oldData) =>
                 new Promise((resolve, reject) => {
                   setTimeout(() => {
@@ -187,10 +200,9 @@ export default class cadastroCliente extends React.Component {
                 new Promise((resolve, reject) => {
                   setTimeout(() => {
                     {
-                      let data = this.data;
-                      const index = data.indexOf(oldData);
-                      data.splice(index, 1);
-                      this.setState({ data }, () => resolve());
+                      // let data = this.data;
+                      console.log('data dele', oldData);
+                      this.handleDelete(oldData);
                     }
                     resolve();
                   }, 1000);
