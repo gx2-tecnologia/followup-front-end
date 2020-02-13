@@ -3,8 +3,9 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import api from 'services';
 import { FaFileUpload } from 'react-icons/fa';
+import MaterialTable from 'material-table';
 
-import { Container, Content } from './styles';
+import { Container, Content, Table } from './styles';
 
 export default class cadastroCliente extends React.Component {
   state = {
@@ -58,6 +59,24 @@ export default class cadastroCliente extends React.Component {
   }
 
   render() {
+    const columns = [
+      {
+        title: 'Razão Social',
+        field: 'razaoSocial',
+        editComponent: props => (
+          <input
+            type="text"
+            value={props.value}
+            onChange={e => props.onChange(e.target.value)}
+          />
+        ),
+      },
+      { title: 'Gestor', field: 'gestor' },
+    ];
+
+    const data = [
+      { razaoSocial: this.state.razaoSocial, gestor: this.state.razaoSocial },
+    ];
     return (
       <Container>
         <h1>Cadastro de Cliente</h1>
@@ -94,6 +113,51 @@ export default class cadastroCliente extends React.Component {
         >
           Enviar
         </Button>
+
+        <Table>
+          <MaterialTable
+            title=""
+            columns={columns}
+            data={data}
+            editable={{
+              onRowAdd: newData =>
+                new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    {
+                      const data = data;
+                      data.push(newData);
+                      this.setState({ data }, () => resolve());
+                    }
+                    resolve();
+                  }, 1000);
+                }),
+              onRowUpdate: (newData, oldData) =>
+                new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    {
+                      const data = this.data;
+                      const index = data.indexOf(oldData);
+                      data[index] = newData;
+                      this.setState({ data }, () => resolve());
+                    }
+                    resolve();
+                  }, 1000);
+                }),
+              onRowDelete: oldData =>
+                new Promise((resolve, reject) => {
+                  setTimeout(() => {
+                    {
+                      let data = this.data;
+                      const index = data.indexOf(oldData);
+                      data.splice(index, 1);
+                      this.setState({ data }, () => resolve());
+                    }
+                    resolve();
+                  }, 1000);
+                }),
+            }}
+          />
+        </Table>
       </Container>
     );
   }
