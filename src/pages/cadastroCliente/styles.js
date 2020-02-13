@@ -69,3 +69,7 @@ export const Container = styled.div`
     margin-top: 10px;
   }
 `;
+
+export const Table = styled.div`
+  margin-top: 20px;
+`;
