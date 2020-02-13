@@ -9,21 +9,32 @@ import { Container, Content, Table } from './styles';
 
 export default class cadastroCliente extends React.Component {
   state = {
-    razaoSocial: '',
-    gestor: '',
-    arquivo: null,
+    user: [{ id: null, razaoSocial: '', logo: '', gestao: '' }],
+    change: [{ razaoSocial: '', logo: '', gestao: '' }],
   };
 
-  handleReadArq = e => {
-    this.setState({ arquivo: e.target.value });
-  };
+  handleGet() {
+    const { razaoSocial, gestao, arquivo } = this.state.change;
 
-  handleRazaoSocial = e => {
-    this.setState({ razaoSocial: e.target.value });
-  };
-  handleGestor = e => {
-    this.setState({ gestor: e.target.value });
-  };
+    const response = api
+      .post('/clientes', {
+        razaoSocial: razaoSocial,
+        gestao: gestao,
+        arquivo: arquivo,
+      })
+      .then(
+        response => {
+          console.log(response);
+          alert('Dados Enviados com sucesso.');
+        },
+        error => {
+          console.log(error);
+          alert('Serviço indisponível');
+        }
+      );
+
+    console.log('teste', response);
+  }
 
   handleSend = e => {
     const { razaoSocial, gestor, arquivo } = this.state;
@@ -35,14 +46,44 @@ export default class cadastroCliente extends React.Component {
     }
   };
 
+  componentDidMount() {
+    const { razaoSocial, gestao, arquivo } = this.state;
+
+    const response = api.get(`/clientes`).then(res => {
+      const users = res.data;
+      this.setState({
+        user: users,
+      });
+    });
+
+    console.log('estado', this.state);
+  }
+
+  handleUpdate(data) {
+    const { razaoSocial, gestao, arquivo } = this.state.user;
+
+    const response = api.post(`/clientes/${data.id}`, data).then(
+      response => {
+        console.log(response);
+        alert('Dados Enviados com sucesso.');
+      },
+      error => {
+        console.log(error);
+        alert('Serviço indisponível');
+      }
+    );
+
+    console.log('teste', response);
+  }
+
   handleRequest() {
-    const { razaoSocial, gestor, arquivo } = this.state;
+    const { razaoSocial, gestao, arquivo } = this.state.user;
 
     const response = api
       .post('/clientes/', {
         razaoSocial: razaoSocial,
         logo: arquivo,
-        gestao: gestor,
+        gestao: gestao,
       })
       .then(
         response => {
@@ -60,6 +101,8 @@ export default class cadastroCliente extends React.Component {
 
   render() {
     const columns = [
+      { title: 'id', field: 'id' },
+
       {
         title: 'Razão Social',
         field: 'razaoSocial',
@@ -71,12 +114,12 @@ export default class cadastroCliente extends React.Component {
           />
         ),
       },
-      { title: 'Gestor', field: 'gestor' },
+      { title: 'Gestor', field: 'gestao' },
+      { title: 'Logo', field: 'logo' },
     ];
 
-    const data = [
-      { razaoSocial: this.state.razaoSocial, gestor: this.state.razaoSocial },
-    ];
+    const data = this.state.user;
+
     return (
       <Container>
         <h1>Cadastro de Cliente</h1>
@@ -135,10 +178,7 @@ export default class cadastroCliente extends React.Component {
                 new Promise((resolve, reject) => {
                   setTimeout(() => {
                     {
-                      const data = this.data;
-                      const index = data.indexOf(oldData);
-                      data[index] = newData;
-                      this.setState({ data }, () => resolve());
+                      this.handleUpdate(newData);
                     }
                     resolve();
                   }, 1000);
