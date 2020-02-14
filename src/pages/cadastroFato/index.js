@@ -7,9 +7,11 @@ import MaterialTable from 'material-table';
 
 import { Container, Content, Table } from './styles';
 
-export default class cadastroCompetencia extends React.Component {
+export default class cadastroFato extends React.Component {
   state = {
     descricao: '',
+    data: '',
+    userId: null,
     rows: [],
   };
 
@@ -19,6 +21,12 @@ export default class cadastroCompetencia extends React.Component {
 
   handleDescricao = e => {
     this.setState({ descricao: e.target.value });
+  };
+  handleData = e => {
+    this.setState({ data: e.target.value });
+  };
+  handleUserId = e => {
+    this.setState({ userId: e.target.value });
   };
 
   handleSend = e => {
@@ -32,8 +40,10 @@ export default class cadastroCompetencia extends React.Component {
 
   handleInsert(descricao, data, userId) {
     const response = api
-      .post('/competencias/', {
+      .post('/fatos/', {
         descricao: descricao,
+        data: data,
+        userId: userId,
       })
       .then(
         response => {
@@ -49,7 +59,7 @@ export default class cadastroCompetencia extends React.Component {
 
   handleUpdate(update) {
     console.log(update);
-    const response = api.post('/competencias/' + update.id, { update }).then(
+    const response = api.post('/fatos/' + update.id, { update }).then(
       response => {
         console.log(response);
         alert('Dados Alterados com sucesso.');
@@ -63,7 +73,7 @@ export default class cadastroCompetencia extends React.Component {
 
   handleDelete(id) {
     console.log(id);
-    const response = api.delete('/competencias/' + id).then(
+    const response = api.delete('/fatos/' + id).then(
       response => {
         console.log(response);
         alert('Dados Deletados com sucesso.');
@@ -76,7 +86,7 @@ export default class cadastroCompetencia extends React.Component {
   }
 
   handleGet() {
-    const response = api.get('/competencias/').then(
+    const response = api.get('').then(
       response => {
         this.setState({ rows: response });
         console.log(response);
@@ -102,24 +112,34 @@ export default class cadastroCompetencia extends React.Component {
           />
         ),
       },
+      { title: 'Data', field: 'data' },
+      { title: 'Id Do Usuario', field: 'userId' },
     ];
 
-    const rows = [
-      // {
-      //   id: 1,
-      //   descricao: 'rjnregnrein',
-      // },
-    ];
+    const rows = [];
 
     return (
       <Container>
-        <h1>Cadastro de Competencia</h1>
+        <h1>Cadastro de Fatos Relevantes</h1>
 
         <Content>
           <TextField
             id="standard-basic"
             label="Descrição"
             onChange={this.handleDescricao}
+            multiline
+            required
+          />
+          <TextField
+            id="standard-basic"
+            label="Data"
+            onChange={this.handleData}
+            required
+          />
+          <TextField
+            id="standard-basic"
+            label="Usuario"
+            onChange={this.handleUserId}
             required
           />
         </Content>

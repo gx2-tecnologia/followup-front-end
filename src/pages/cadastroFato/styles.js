@@ -66,7 +66,6 @@ export const Container = styled.div`
 
   .BtnEnviar {
     margin-left: 59%;
-
     margin-top: 10px;
   }
 `;
