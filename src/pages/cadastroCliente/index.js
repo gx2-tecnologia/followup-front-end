@@ -24,6 +24,15 @@ export default class cadastroCliente extends React.Component {
     });
   }
 
+  // componentDidUpdate() {
+  //   const response = api.get(`/clientes`).then(res => {
+  //     const users = res.data;
+  //     this.setState({
+  //       user: users,
+  //     });
+  //   });
+  // }
+
   handleSend = e => {
     const { razaoSocial, gestao, logo } = this.state;
     console.log('state', this.state.change);
@@ -89,6 +98,13 @@ export default class cadastroCliente extends React.Component {
         alert('Serviço indisponível');
       }
     );
+
+    const respons = api.get(`/clientes`).then(res => {
+      const users = res.data;
+      this.setState({
+        user: users,
+      });
+    });
   }
 
   handleRequest() {

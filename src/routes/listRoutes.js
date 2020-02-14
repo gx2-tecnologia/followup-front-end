@@ -1,9 +1,10 @@
 import Home from 'pages/Home';
-import cadastroCliente from 'pages/cadastroCliente';
+import CadastroCliente from 'pages/cadastroCliente';
 import CadastroIndicador from 'pages/CadastroIndicador/cadastroIndicador';
 import CadastroHardSkills from '../pages/cadastroHardSkills/cadastroHardSkills';
 import CadastroCompetencia from '../pages/CadastroCompetencia';
 import CadastroUsuario from '../pages/CadastroUsuario';
+import CadastroFato from '../pages/cadastroFato';
 
 export const routes = [
   {
@@ -15,7 +16,7 @@ export const routes = [
   {
     description: 'Cadastro de Cliente',
     path: '/cadastrocliente',
-    component: cadastroCliente,
+    component: CadastroCliente,
     isMenu: false,
   },
   {
@@ -37,6 +38,12 @@ export const routes = [
     description: 'Cadastro de Usuário',
     path: '/cadastrousuario',
     component: CadastroUsuario,
+    isMenu: false,
+  },
+  {
+    description: 'Cadastro de Fato',
+    path: '/cadastroFato',
+    component: CadastroFato,
     isMenu: false,
   },
 ];
