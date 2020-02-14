@@ -6,48 +6,45 @@ export const Content = styled.div`
   width: 300px;
   margin: 0 auto;
 
-  h1 {
+  h1{
     font-size: 30px;
     text-align: center;
   }
-`;
-
-export const Content = styled.div`
-  background-color: #fff;
-  width: 300px;
-  padding: 20px;
-  margin: 0 auto;
 
   display: flex;
   flex-direction: column;
 
-  .MuiFormControl-root {
-    margin-bottom: 15px;
   }
 
-  label {
+  .MuiFormControl-root{
+    margin-bottom:15px;
+  }
+
+  label{
     cursor: pointer;
-    div {
+    div{
       display: flex;
       align-items: baseline;
       color: #949494;
     }
-    &:hover {
-      color: 'black';
-      p {
-        font-weight: bold;
-      }
-    }
+        &:hover {
+          color: 'black';
+          p {
+            font-weight: bold;
+          }
+        }
 
-    p {
-      font-size: 15px;
-      margin-left: 5px;
+    p{
+      font-size:15px;
+      margin-left:5px;
       font-weight: normal;
     }
+
   }
 
   .inputArquivo {
     /* display: none; */
+
   }
 `;
 
@@ -69,7 +66,6 @@ export const Container = styled.div`
 
   .BtnEnviar {
     margin-left: 59%;
-
     margin-top: 10px;
   }
 `;
