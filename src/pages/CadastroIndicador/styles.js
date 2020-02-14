@@ -1,56 +1,65 @@
 import styled from 'styled-components';
 
-export const ContainerMain = styled.div`
-  width: 700px;
-  margin: 10px auto;
+export const Container = styled.div`
+  background-color: #fff;
+  padding-bottom: 30px;
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 20px;
 
-  div.divForm {
-    border-radius: 10px;
-    padding: 80px 50px;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.349019607843);
-    background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.349019607843);
+  background-color: #ffffff;
 
-    h1 {
-      font-family: Raleway, sans-serif;
-      font-size: 30px;
-      font-weight: 550;
-      text-align: center;
+  .BtnEnviar {
+    margin-left: 59%;
+    margin-top: 10px;
+  }
+  h1 {
+    font-size: 30px;
+    text-align: center;
+    /* margin-left:20%; */
+  }
+`;
 
-      margin: 40px 20px;
+export const Content = styled.div`
+   background-color: #fff;
+  width: 300px;
+  padding: 20px;
+  margin: 0 auto;
+
+
+
+  display: flex;
+  flex-direction: column;
+
+  }
+
+  .MuiFormControl-root{
+    margin-bottom:15px;
+  }
+
+  label{
+    cursor: pointer;
+    div{
+      display: flex;
+      align-items: baseline;
+      color: #949494;
     }
-  }
-  input {
-    width: 80%;
-    margin-bottom: 24px;
-    margin-left: 10%;
-    padding: 10px 15px;
-    border: 1px solid #cfcfcf;
-    outline: 0;
-    font-family: Raleway, sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    background-color: #fff;
-    color: #797979;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-  }
+        &:hover {
+          color: 'black';
+          p {
+            font-weight: bold;
+          }
+        }
 
-  button {
-    font-family: Raleway, sans-serif;
-    height: 35px;
-    width: 20%;
-    background-color: #0faba8;
-    margin: 0 40%;
-    border: none;
-    border-radius: 3px;
-    color: #fff;
-    &:hover {
-      background-color: rgba(0, 0, 0, 1);
-      color: #0faba8;
+    p{
+      font-size:15px;
+      margin-left:5px;
+      font-weight: normal;
     }
-  }
+`;
+
+export const Table = styled.div`
+  margin-top: 20px;
 `;

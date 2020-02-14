@@ -23,41 +23,36 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-   background-color: #fff;
+  background-color: #fff;
   width: 300px;
   padding: 20px;
   margin: 0 auto;
 
-
-
   display: flex;
   flex-direction: column;
 
+  .MuiFormControl-root {
+    margin-bottom: 15px;
   }
 
-  .MuiFormControl-root{
-    margin-bottom:15px;
-  }
-
-  label{
+  label {
     cursor: pointer;
-    div{
+    div {
       display: flex;
       align-items: baseline;
       color: #949494;
     }
-        &:hover {
-          color: 'black';
-          p {
-            font-weight: bold;
-          }
-        }
-
-    p{
-      font-size:15px;
-      margin-left:5px;
-      font-weight: normal;
+    &:hover {
+      color: 'black';
+      p {
+        font-weight: bold;
+      }
     }
 
+    p {
+      font-size: 15px;
+      margin-left: 5px;
+      font-weight: normal;
+    }
   }
 `;
