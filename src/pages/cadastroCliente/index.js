@@ -127,7 +127,6 @@ export default class cadastroCliente extends React.Component {
   render() {
     const columns = [
       { title: 'id', field: 'id' },
-
       {
         title: 'Razão Social',
         field: 'razaoSocial',
